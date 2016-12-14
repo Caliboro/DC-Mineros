@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32cbcbac-5ef5-4aec-8778-c588ff13381b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#73B0E6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#CFDBE6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#73B0E6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#CFDBE6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#73B0E6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#CFDBE6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="trabajadores" uuid="4c0c8815-8602-4bbf-ac24-9caa5beec42b">
+		<parameter name="ID_CONTRATO" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fecha_inicio" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fecha_termino" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT ACT.ID_ODS, COUNT(ACT.AVANCE_HORAS_TRAB) AS 'Avance de Horas' FROM ((ACTIVIDAD AS ACT INNER JOIN ODS ON ACT.ID_ODS = ODS.ID_ODS) INNER JOIN CONTRATO AS CON ON ODS.ID_CONTRATO = CON.ID_CONTRATO) where (CON.ID_CONTRATO = $P{ID_CONTRATO} ) AND (ACT.FECHA_ACTIVIDAD >= $P{fecha_inicio}) AND (ACT.FECHA_ACTIVIDAD<=$P{fecha_termino}) GROUP BY ACT.ID_ODS]]>
+		</queryString>
+		<field name="ID_ODS" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="Avance de Horas" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="equipos" uuid="dadc1203-3a43-40c9-ab45-bde3ba5ebaaf">
+		<parameter name="idcontrato" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechainicio" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechatermino" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT ACT.ID_ODS, COUNT(ACT.AVANCE_HORAS) AS 'Avance de Horas' FROM ((REGISTRO_EQUIPOS AS ACT INNER JOIN ODS ON ACT.ID_ODS = ODS.ID_ODS) INNER JOIN CONTRATO AS CON ON ODS.ID_CONTRATO = CON.ID_CONTRATO) WHERE (CON.ID_CONTRATO = $P{idcontrato} ) AND (ACT.FECHA_ACTIVIDAD >= $P{fechainicio}) AND (ACT.FECHA_ACTIVIDAD <= $P{fechatermino}) GROUP BY ACT.ID_ODS]]>
+		</queryString>
+		<field name="ID_ODS" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="Avance de Horas" class="java.lang.Long"/>
+	</subDataset>
+	<parameter name="ID_CONTRATO1" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_inicio1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_termino1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_contrato2" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_inicio2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_termino2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     usuario.`NOMBRE_USUARIO` AS usuario_NOMBRE_USUARIO
+FROM
+     `usuario` usuario]]>
+	</queryString>
+	<field name="usuario_NOMBRE_USUARIO" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="99">
+			<image>
+				<reportElement x="-425" y="-23" width="1000" height="70" uuid="c40277c6-27bd-49a7-9e10-75aaecf61a53"/>
+				<imageExpression><![CDATA["C:\\Users\\Pablo\\Desktop\\Nueva carpeta\\cabecera.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="57"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35">
+			<line>
+				<reportElement x="-20" y="0" width="595" height="1" forecolor="#666666" uuid="98754c00-f9b3-4203-b608-a25cf11db86a"/>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-109" width="595" height="57" backcolor="#3E3F95" uuid="040cb818-31da-4d75-a587-f91a2d66f1cc"/>
+				<staticText>
+					<reportElement x="20" y="0" width="288" height="43" forecolor="#FFFFFF" uuid="3033b59b-1878-4ff5-bfa9-4dc5ec68e056"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Avance de Obras]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="340" y="16" width="235" height="41" forecolor="#FFFFFF" uuid="d9f97bc2-32ba-4599-b7ec-d436b538075a"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Obras Correspondientes al Contrato de division Chuquicamata]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement mode="Transparent" x="69" y="1" width="205" height="30" backcolor="#FFFFFF" uuid="52ef19f0-278c-4f6c-9695-f4bdc1c19c14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Horas Hombre Utilizadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="274" y="1" width="180" height="30" backcolor="#FFFFFF" uuid="4d8443e1-a577-42ff-8222-581a59be18be"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Horas Maquina Utilizadas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27">
+			<componentElement>
+				<reportElement key="table 1" style="table" positionType="Float" mode="Opaque" x="69" y="0" width="205" height="23" backcolor="#FFFFFF" uuid="5cabe41f-13ae-41e3-90da-454e1ef61009"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="trabajadores" uuid="a54afadc-e20b-4f0d-b7ac-56b11273c862">
+						<datasetParameter name="ID_CONTRATO">
+							<datasetParameterExpression><![CDATA[$P{ID_CONTRATO1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fecha_inicio">
+							<datasetParameterExpression><![CDATA[$P{fecha_inicio1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fecha_termino">
+							<datasetParameterExpression><![CDATA[$P{fecha_termino1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="cfd079c8-cf33-4ff8-b0bc-48f6adcd4907">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="0cb13fab-831f-467c-af9c-c94852d09552"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Orden de Servicio]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="31797ab9-d927-4046-9ec4-a53a51910b05"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ID_ODS}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="6cdb46c6-e7b0-4eb6-867f-89db386e6028">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7348d47e-04cb-4c98-bf58-17eaea7dcb35"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Horas Utilizadas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 1_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="fd38419e-a4c0-4450-be58-a967ace4a218"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Avance de Horas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 2" style="table" positionType="Float" mode="Opaque" x="274" y="0" width="180" height="23" backcolor="#FFFFFF" uuid="8b6fe3a6-e31e-4ee0-939a-5cc77f370097"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="equipos" uuid="d47e2107-e23b-4d37-9223-a6c569097c5d">
+						<datasetParameter name="idcontrato">
+							<datasetParameterExpression><![CDATA[$P{ID_CONTRATO1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechainicio">
+							<datasetParameterExpression><![CDATA[$P{fecha_inicio1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechatermino">
+							<datasetParameterExpression><![CDATA[$P{fecha_termino1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="b870417f-77d1-473c-bcdf-2c2bbc905ec1">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="622e7858-165a-4743-a3dc-4f8579a96826"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Orden de Servicio]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="550af4ee-6e69-4f22-a207-f429ac630407"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ID_ODS}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="f8275ed9-24d1-4649-8cb4-3af908dcaff0">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="335b0efa-3682-4571-b9b2-8e9e7551f68b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Horas Utilizadas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="130ffebb-6d34-4612-a5de-d4b5e6d87ee7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Avance de Horas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField>
+				<reportElement x="475" y="3" width="100" height="20" forecolor="#FFFFFF" uuid="1cb9e92f-3a07-493f-8005-20bea4563e6b"/>
+				<textFieldExpression><![CDATA[$F{usuario_NOMBRE_USUARIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="3684fb93-28f5-49da-b50e-ed9e7d2a5dba"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="cc8fc4db-62be-40b4-9acb-f115d2a4b13e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="95771d7b-ed42-44f0-8ebd-5bd436723ce5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
