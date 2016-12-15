@@ -51,27 +51,44 @@ request.getRequestDispatcher("/faces/header.jsp").include(request, response);
 out.println("<!DOCTYPE html>");
 out.println("<html>");
 out.println("<head>");
+request.getRequestDispatcher("/WEB-INF/jspf/Estilo_body.jspf").include(request, response);
+            
 //out.print("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
 out.println("<title>Reporte Avance Obras</title>");
 //out.println("<link href=\""+request.getContextPath()+"/Estilos/Estilos1.css\" rel=\"stylesheet\" type=\"text/css\">");
 out.println("</head>");
 out.println("<body>");
-out.println("<div><h1>a</h1></div>");
-out.println("<div><h1>Avance de Obras</h1></div>");
+out.println("<div class='container-fluid'>");
+out.println("<h1>Avance de Obras</h1>");
 //</editor-fold>
            
             //<editor-fold defaultstate="collapsed" desc="Formulario de Fechas">
-            out.println("<div id='contenedor_formulario'>");
-            out.println("<form action= Obras_Servlet method='post' />");
-            out.println("Ingrese Rango de Fechas");
-            out.println("<p>Desde: <input type='text' name='desde' />");
-            out.println("Hasta: <input type='text' name= 'hasta' /></p>");
             
-            out.println("<input type='text' name='servlet' value='Avance_obras' placeholder='Avance_obras' style='visibility:hidden'>");
-            
-            out.println("<p><input type='submit' name='Ingresafecha'/></p>");
-            out.println("</form>");
+                out.println("<div class='panel panel-primary'>");
+                    
+                    out.println("<div class='panel-heading'>Ingrese Rango de Fechas</div>");
+                        
+                    out.println("<div class='panel-body'>");
+                    
+                        out.println("<form action= Obras_Servlet method='post' />");
+                            out.println("<div class='form-group'>");
+                                out.println("<label>Desde: <input type='text' name='desde' /</label>");
+                            out.println("</div>");
+                            out.println("<div class='form-group'>");
+                                out.println("<label>Hasta: <input type='text' name= 'hasta' /></label>");
+                            out.println("</div>");
+                            out.println("<div class='form-group'>");
+                                out.println("<input type='text' name='servlet' value='Avance_obras' placeholder='Avance_obras' style='visibility:hidden'>");
+                            out.println("</div>");
+                            out.println("<div class='form-group'>");
+                                out.println("<input type='submit' name='Ingresafecha' class='btn btn-primary'/>");
+                            out.println("</div>");
+                        out.println("</form>");
+                    
+                    out.println("</div>");
+                out.println("</div>");
             out.println("</div>");
+            
 //</editor-fold>
             
             //<editor-fold defaultstate="collapsed" desc="Inicio Despliegue Contratos">
@@ -81,16 +98,16 @@ out.println("<div><h1>Avance de Obras</h1></div>");
                 
                 cont = contratos.get(i);
                   String color;
-                if( cont.getEstado_contrato().trim() == "Vigente") color = "#C8FE2E";
-                if( cont.getEstado_contrato().trim() == "Vencido") color = "#B40404";
-                if( cont.getEstado_contrato().trim() == "Por Vencer") color = "#DBA901";
-                if( cont.getEstado_contrato().trim() == "En Tramitación") color = "#58ACFA";
+                if( cont.getEstado_contrato().equals("Vigente") ) color = "#red";
+                if( cont.getEstado_contrato().equals("Vencido")) color = "#B40404";
+                if( cont.getEstado_contrato().equals("Por Vencer")) color = "#DBA901";
+                if( cont.getEstado_contrato().equals("En Tramitación")) color = "#58ACFA";
                 else color = "black";
                
                 
                 contador = contador+i;
                 out.println("<a href='Obras_Servlet?var1="+cont.getFecha_inicio()+"?"+cont.getFecha_termino()+"?"+contador+"?Avance_obras' action= get>");
-                out.println("<div id='contenedor_contratos'  style='background-color:'"+color+"'>");
+                out.println("<div id='contenedor_contratos' background-color:'"+color+"'>");
                 out.println("<p id='contrato'>Contrato: "+cont.getNombre_contrato()+".</p>");
                 out.println("<p id='contrato'>Estado: "+cont.getEstado_contrato()+".</p>");
                 out.println("<p id='contrato'>Inicio Contrato: "+cont.getFecha_inicio()+".</p>");
@@ -105,7 +122,8 @@ horas_trabajadores = (ArrayList <Contrato>)request.getAttribute("trabajadores");
 
     if(horas_trabajadores.size()> 0){
         
-        out.println("<table class=\"tg\">");
+        out.println("<div class='col-md-6'>");
+        out.println("<table align='center'>");
         
         out.println("<tr>");
         
@@ -124,6 +142,7 @@ horas_trabajadores = (ArrayList <Contrato>)request.getAttribute("trabajadores");
             out.println("</tr>");
         }
         out.println("</table>");
+        out.println("</div>");
     }
 
 //</editor-fold>
@@ -133,7 +152,8 @@ horas_trabajadores = (ArrayList <Contrato>)request.getAttribute("trabajadores");
 
 horas_equipos = (ArrayList <Contrato>)request.getAttribute("equipos");
 if(horas_equipos.size() > 0){
-    out.println("<table class=\"tg\">");
+    out.println("<div class='col-md-6'>");
+    out.println("<table align='center'>");
         
         out.println("<tr>");
             out.println("<th class=\"tg-yw4l\">Número ODS</th>");
@@ -148,6 +168,7 @@ if(horas_equipos.size() > 0){
             out.println("</tr>");
         }
     out.println("</table>");
+    out.println("</div>");
 }
 //</editor-fold>
 
@@ -188,27 +209,10 @@ if(horas_trabajadores.size() > 0 || horas_equipos.size() > 0){
             
             
             
-            
+request.getRequestDispatcher("/WEB-INF/jspf/bottom.jspf").include(request,response); 
+out.println("</div>");
 out.println("</body>");
 out.println("</html>");
-            
-     /*       File reportfile = new File ("");
-            
-            Map <String, Object> parameter = new HashMap<String,Object>();
-        
-            
-        try {
-            byte[] bytes = JasperRunManager.runReportToPdf(reportfile.getPath(), parameter);
-            response.setContentType("application/pdf");
-            response.setContentLength(bytes.length);
-            ServletOutputStream output = response.getOutputStream();
-            output.write(bytes,0,bytes.length   );
-            
-            output.flush();
-            output.close();
-        } catch (JRException ex) {
-            Logger.getLogger(Avance_obras.class.getName()).log(Level.SEVERE, null, ex);
-        } */
             
            
             

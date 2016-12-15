@@ -41,6 +41,8 @@ public class Obras_trabajadores extends HttpServlet {
 out.println("<!DOCTYPE html>");
 out.println("<html>");
 out.println("<head>");
+request.getRequestDispatcher("/WEB-INF/jspf/Estilo_body.jspf").include(request, response);
+            
 out.println("<title>Servlet Obras_trabajadores</title>");
 out.println("</head>");
 out.println("<body>");
@@ -139,7 +141,7 @@ for(int j=0; j<ODS.size(); j++){
 
 //</editor-fold>
 
-            
+            request.getRequestDispatcher("/WEB-INF/jspf/bottom.jspf").include(request,response);
             out.println("</body>");
             out.println("</html>");
     }

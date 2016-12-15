@@ -55,6 +55,8 @@ request.getRequestDispatcher("/faces/header.jsp").include(request, response);
 out.println("<!DOCTYPE html>");
 out.println("<html>");
 out.println("<head>");
+request.getRequestDispatcher("/WEB-INF/jspf/Estilo_body.jspf").include(request, response);
+            
 out.println("<title>Actividades de Equipos</title>");
 out.println("</head>");
 out.println("<body>");
@@ -159,7 +161,7 @@ for(int i=0; i<equipo.size();i++){
     
 }
 //</editor-fold>
-     
+            request.getRequestDispatcher("/WEB-INF/jspf/bottom.jspf").include(request,response);
             out.println("</body>");
             out.println("</html>");
     

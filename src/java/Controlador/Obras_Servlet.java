@@ -5,7 +5,7 @@ import Modelo.CarpetaDeArranque;
 import Modelo.Contrato;
 import Modelo.Licencia;
 import Modelo.Examen;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
+//import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;

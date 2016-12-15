@@ -24,6 +24,8 @@ public class Documentos_trabajador extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            request.getRequestDispatcher("/WEB-INF/jspf/Estilo_body.jspf").include(request, response);
+            
             out.println("<title>Servlet Documentos_trabajador</title>");            
             out.println("</head>");
             out.println("<body>");
@@ -62,8 +64,7 @@ public class Documentos_trabajador extends HttpServlet {
             }
             
             out.println("</table>");
-            
-            
+            request.getRequestDispatcher("/WEB-INF/jspf/bottom.jspf").include(request,response);
             out.println("</body>");
             out.println("</html>");
         } finally {

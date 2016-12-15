@@ -38,14 +38,18 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("/faces/header.jsp").include(request, response);
+        
         PrintWriter out = response.getWriter();
         try { 
             out.println("<HTML>");
             out.println("<HEAD>");
+            request.getRequestDispatcher("/WEB-INF/jspf/Estilo_body.jspf").include(request, response);
             out.println("<TITLE>HOLA DESDE POST</TITLE>");
             out.println("</HEAD>");
             out.println("<BODY>");
             out.println("HOLA DESDE POST");
+            // request.getRequestDispatcher("/WEB-INF/jspf/Estilo_body.jspf").include(request, response);
+            request.getRequestDispatcher("/WEB-INF/jspf/bottom.jspf").include(request,response);
             out.println("</BODY>");
             out.println("</HTML>");
             

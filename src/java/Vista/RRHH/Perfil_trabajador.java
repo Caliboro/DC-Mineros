@@ -36,6 +36,7 @@ public class Perfil_trabajador extends HttpServlet {
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
+            
         out.println("<title>Servlet Perfil_trabajador</title>");
         out.println("</head>");
         out.println("<body>");
@@ -104,7 +105,7 @@ public class Perfil_trabajador extends HttpServlet {
             
             out.println("</ul>");
             
-            
+            request.getRequestDispatcher("/WEB-INF/jspf/bottom.jspf").include(request,response);
             out.println("</body>");
             out.println("</html>");
         

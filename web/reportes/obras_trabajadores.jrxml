@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32cbcbac-5ef5-4aec-8778-c588ff13381b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Error" uuid="32cbcbac-5ef5-4aec-8778-c588ff13381b">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -104,12 +104,7 @@ WHERE
 		<band/>
 	</background>
 	<title>
-		<band height="99">
-			<image>
-				<reportElement x="-425" y="-23" width="1000" height="70" uuid="c40277c6-27bd-49a7-9e10-75aaecf61a53"/>
-				<imageExpression><![CDATA["C:\\Users\\Pablo\\Desktop\\Nueva carpeta\\cabecera.png"]]></imageExpression>
-			</image>
-		</band>
+		<band height="99"/>
 	</title>
 	<pageHeader>
 		<band height="57">

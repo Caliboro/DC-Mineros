@@ -84,7 +84,7 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT ACT.ID_ODS, COUNT(ACT.AVANCE_HORAS_TRAB) AS 'Avance de Horas' FROM ((ACTIVIDAD AS ACT INNER JOIN ODS ON ACT.ID_ODS = ODS.ID_ODS) INNER JOIN CONTRATO AS CON ON ODS.ID_CONTRATO = CON.ID_CONTRATO) where (CON.ID_CONTRATO = $P{ID_CONTRATO} ) AND (ACT.FECHA_ACTIVIDAD >= $P{fecha_inicio}) AND (ACT.FECHA_ACTIVIDAD<=$P{fecha_termino}) GROUP BY ACT.ID_ODS]]>
+			<![CDATA[SELECT ACT.ID_ODS, COUNT(ACT.AVANCE_HORAS_TRAB) AS 'Avance de Horas' FROM ((ACTIVIDAD AS ACT INNER JOIN ODS ON ACT.ID_ODS = ODS.ID_ODS) INNER JOIN CONTRATO AS CON ON ODS.ID_CONTRATO = CON.ID_CONTRATO)  where (CON.ID_CONTRATO = $P{ID_CONTRATO} ) AND (ACT.FECHA_ACTIVIDAD >= $P{fecha_inicio}) AND (ACT.FECHA_ACTIVIDAD<=$P{fecha_termino}) GROUP BY ACT.ID_ODS]]>
 		</queryString>
 		<field name="ID_ODS" class="java.lang.Integer">
 			<fieldDescription><![CDATA[]]></fieldDescription>
@@ -138,10 +138,10 @@ FROM
 		<band/>
 	</background>
 	<title>
-		<band height="99">
+		<band height="127">
 			<image>
-				<reportElement x="-425" y="-23" width="1000" height="70" uuid="c40277c6-27bd-49a7-9e10-75aaecf61a53"/>
-				<imageExpression><![CDATA["C:\\Users\\Pablo\\Desktop\\Nueva carpeta\\cabecera.png"]]></imageExpression>
+				<reportElement x="-425" y="0" width="1000" height="70" uuid="84886c6a-6e5b-4d7e-b72a-d5520b41aca3"/>
+				<imageExpression><![CDATA["C:\\Users\\Pablo\\Desktop\\cabecera.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -154,7 +154,7 @@ FROM
 				<reportElement x="-20" y="0" width="595" height="1" forecolor="#666666" uuid="98754c00-f9b3-4203-b608-a25cf11db86a"/>
 			</line>
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-109" width="595" height="57" backcolor="#3E3F95" uuid="040cb818-31da-4d75-a587-f91a2d66f1cc"/>
+				<reportElement mode="Opaque" x="-20" y="-114" width="595" height="57" backcolor="#3E3F95" uuid="040cb818-31da-4d75-a587-f91a2d66f1cc"/>
 				<staticText>
 					<reportElement x="20" y="0" width="288" height="43" forecolor="#FFFFFF" uuid="3033b59b-1878-4ff5-bfa9-4dc5ec68e056"/>
 					<textElement>
@@ -187,7 +187,7 @@ FROM
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="27">
+		<band height="25">
 			<componentElement>
 				<reportElement key="table 1" style="table" positionType="Float" mode="Opaque" x="69" y="0" width="205" height="23" backcolor="#FFFFFF" uuid="5cabe41f-13ae-41e3-90da-454e1ef61009"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -242,7 +242,7 @@ FROM
 			<componentElement>
 				<reportElement key="table 2" style="table" positionType="Float" mode="Opaque" x="274" y="0" width="180" height="23" backcolor="#FFFFFF" uuid="8b6fe3a6-e31e-4ee0-939a-5cc77f370097"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="equipos" uuid="d47e2107-e23b-4d37-9223-a6c569097c5d">
+					<datasetRun subDataset="equipos" uuid="f1532f9a-1032-4fe6-a64e-e26d4208ac05">
 						<datasetParameter name="idcontrato">
 							<datasetParameterExpression><![CDATA[$P{ID_CONTRATO1}]]></datasetParameterExpression>
 						</datasetParameter>

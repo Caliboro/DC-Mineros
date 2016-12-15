@@ -90,12 +90,16 @@
         <servlet-name>Actividad</servlet-name>
         <url-pattern>/Actividad</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Avance_obras</servlet-name>
+        <url-pattern>/Avance_obras</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>redirect.jsp</welcome-file>
+     <welcome-file>Avance_obras</welcome-file>
     </welcome-file-list>
 </web-app>

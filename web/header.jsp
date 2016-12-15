@@ -14,7 +14,7 @@
         <link href="Estilo.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="header">
+        <div class="header">
 			<ul class="nav">
 				<li><a href="">Inicio</a></li>
 				<li><a href="">Recursos Humanos</a>

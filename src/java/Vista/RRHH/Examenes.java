@@ -39,10 +39,13 @@ public class Examenes extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            request.getRequestDispatcher("/WEB-INF/jspf/Estilo_body.jspf").include(request, response);
+            
             out.println("<title>Servlet Examenes</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Examenes at " + request.getContextPath() + "</h1>");
+            request.getRequestDispatcher("/WEB-INF/jspf/bottom.jspf").include(request,response);
             out.println("</body>");
             out.println("</html>");
         } finally {

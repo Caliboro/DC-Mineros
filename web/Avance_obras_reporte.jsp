@@ -25,6 +25,8 @@
        // trabajadores = (ArrayList<Contrato>)request.getAttribute("trabajadores");
        // trabajadores = (ArrayList<Contrato>)request.getAttribute("equipos");
    
+       //diego_pizarro.rojo@hotmail.com dpizarro.rojo@gmail.com
+        
         Connection conn = null;
         Class.forName("com.mysql.jdbc.Driver");
         conn = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/dc_mineros_1.1","root","");
@@ -37,14 +39,17 @@
         String inicio = "2012-01-01";
         String fin = "2017-01-01";
         
-        String archivo = session.getServletContext().getRealPath("/reportes/obras_trabajadores.jrxml");
+        String archivo = session.getServletContext().getRealPath("/reportes/avance_obras.jrxml");
         InputStream input = new FileInputStream(new File(archivo));
         
         
         Map<String,Object> parameter = new HashMap<String,Object>();
-        parameter.put("ods", 60);
-        parameter.put("fechainicio", "2012-01-01");
-        parameter.put("fechatermino", "2017-01-01");
+        parameter.put("ID_CONTRATO1", 1);
+        parameter.put("fecha_inicio1", "2012-01-01");
+        parameter.put("fecha_termino1", "2017-01-01");
+        parameter.put("id_contrato2", 1);
+        parameter.put("fecha_inicio2", "2012-01-01");
+        parameter.put("fecha_termino2", "2017-01-01");
         
         
         
@@ -61,11 +66,4 @@
             System.out.println(ex);
         
         }
-      
-       
-     
-
-            
-            
-
         %>

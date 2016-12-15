@@ -88,7 +88,7 @@ public class Usuario_cont extends HttpServlet {
               request.getSession().setAttribute("error",var);
               this.getServletConfig().getServletContext().setAttribute("error", var);
               //response.sendRedirect("Home");
-              request.getRequestDispatcher("/faces/header.jsp").forward(request, response);
+              request.getServletContext().getRequestDispatcher("/Home").forward(request, response);
                
             }
             else{
@@ -97,7 +97,7 @@ public class Usuario_cont extends HttpServlet {
               usuario.setAttribute("error",var);
               //request.getSession().setAttribute("error",var);
               //this.getServletConfig().getServletContext().setAttribute("error", var);
-              request.getServletContext().getRequestDispatcher("Logeo").forward(request, response);
+              request.getServletContext().getRequestDispatcher("/Logeo").forward(request, response);
                
             }
         }

@@ -1,0 +1,14 @@
+.header{
+    background-color:#000;
+    color: #fff;
+    height: 40px;  
+}
+.bottom{
+    background-color:#ddd;
+    padding: 10px;
+    height: 20px;
+    text-align: center;
+}
+.content{
+    padding: 10px; 
+}
